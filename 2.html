@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Validasi</title>
+</head>
+<body>
+    <script>
+
+        //user   = huruf kecil atau titik , panjan min 8
+        //email  = nama akun huruf besar & kecil , ada angka panjang min 4. 
+        // dan harus berakhiran example.domain ( gmail.com,.net)
+
+        const validUser   = "naufal.hfhzn",
+              invalidUser = "naufaL"
+              validEmail  = "Naufal.hafizhan@gmail.com",
+              invalidEmail= "nafgmail.com"
+
+        function is_valid(text, type) {
+            let valid     = false,
+                errorText = "",
+                errorArr  = []
+
+            if (type == "username") {
+                let rule = /^([a-z\.]){8,}$/
+                
+                if ( !rule.test(text) ) {
+                    errorText = "Username harus mengandung huruf kecil atau titik"
+                    errorArr.push(errorText)
+                }
+                if (text.length < 8) {
+                    errorText = "Minimial 8 karakter"
+                    errorArr.push(errorText)
+                }
+            }
+
+            if (type == "email") {
+                let rule = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+
+                if (!rule.test(text)) {
+                    errorText = "email format salah"
+                    errorArr.push(errorText)
+                }
+                if (text.substring(0, text.indexOf("@")).length < 4) {
+                    errorText = "Minimial 4 karakter"
+                    errorArr.push(errorText)
+                }
+            }
+            // email validation
+
+            if ( errorArr.length == 0 ) {
+                return valid = true;
+            }else{
+                return errorArr
+            }
+
+        }  
+
+        console.log(is_valid(validEmail, "email")) 
+        console.log(is_valid(invalidEmail, "email")) 
+        console.log(is_valid(validUser, "username"))
+        console.log(is_valid(invalidUser, "username"))
+
+        
+    </script>
+</body>
+</html>

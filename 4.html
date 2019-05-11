@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Jolly Programmer</title>
+</head>
+<body>
+    <div id="bendera"></div>
+    <script>
+        const string = ['P','R','O','G','R','A','M','M','E','R']
+        let flag = ""
+        function cetak_bendera() {
+            for (let baris = 0; baris < string.length; baris++) {
+                for (let kol = 0; kol < string.length; kol++) {
+
+                    if (kol == baris || kol == string.length-1-baris) {
+                        flag += string[kol] + " "
+                    }else{
+                        flag += "= "
+                    }
+                }// kolom
+                flag += "\n"
+            } // baris
+        }
+        cetak_bendera();
+
+        console.log(flag);
+    </script>
+</body>
+</html>

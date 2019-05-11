@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Random String</title>
+</head>
+<body>
+    <div class="random">
+        <ul></ul>
+    </div>
+    <script>
+
+        let str    = "abcdefghijklmnopqrstuvewxyz1234567890",
+            strList = str.split(""),
+            randStrLen  = 32,
+            randStrArr = []
+
+        function cetak(howMuch) {
+
+            for (let j = 0; j < howMuch; j++) {
+
+                let str = ""
+
+                for (let i = 0; i < randStrLen; i++) {
+                     str += strList[Math.floor(Math.random() * 37)];
+                }// generate random str
+
+                // uji str sebelum di push ke array
+                if (randStrArr.length >= 1 ) {
+                    let pass = false // default false
+                    for (let k = 0; k < randStrArr.length; k++) {
+                        if ( str !== randStrArr[k]) {
+                            pass = true
+                        }
+                    } // uji str dengan isi seluruh array
+                    
+                    if (pass) {
+                        randStrArr.push(str)
+                    } // push ke array jika lolos uji
+                }else{
+                    randStrArr.push(str)
+                }
+            }
+            
+        } // end function cetak
+
+        cetak(5)
+        randStrArr.forEach(function(v) {
+            let li = "<li>" +v+ "</li>"
+            document.querySelectorAll(".random ul")[0].innerHTML += li
+        })
+    </script>
+</body>
+</html>
